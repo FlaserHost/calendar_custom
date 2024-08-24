@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper {
+    display: inline-block;
+    padding: 20px;
+}
+
+.calendar {
+    display: grid;
+    grid: 20px repeat(auto-fill, 70px) / repeat(7, minmax(10px, 70px));
+    margin-top: 10px;
+}
+
+.head {
+    text-align: center;
+}
+
+.cell {
+    display: flex;
+    align-items: flex-end;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    height: 70px;
+}
+
+.current-day {
+    box-shadow: inset 0 0 0 5px rgba(25, 118, 210, .49);
+}
+
+.calendar > div {
+    border-top: 1px solid #B8BCC9;
+    border-left: 1px solid #B8BCC9;
+    color: #B8BCC9;
+    font-size: 17px;
+}
+
+.calendar > div:nth-child(7n) {
+    border-right: 1px solid #B8BCC9;
+}
+
+.calendar > div:nth-last-child(-n + 7) {
+    border-bottom: 1px solid #B8BCC9;
+}
+
+.header-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.calendar-header {
+    text-transform: capitalize;
+    color: #B8BCC9;
+    margin-right: auto;
+}
+
+.direction-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: transparent url('../img/chevron.svg') no-repeat center / 25px;
+    margin-right: -10px;
+}
+
+.direction-btn.prev {
+   transform: rotate(-180deg);
+}
+
+
