@@ -1,6 +1,32 @@
 'use strict';
 
 const daysNames = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'];
+const celebrations = [
+    '01.01.2024',
+    '02.01.2024',
+    '03.01.2024',
+    '04.01.2024',
+    '05.01.2024',
+    '06.01.2024',
+    '07.01.2024',
+    '08.01.2024',
+    '23.02.2024',
+    '24.02.2024',
+    '25.02.2024',
+    '08.03.2024',
+    '09.03.2024',
+    '10.03.2024',
+    '29.04.2024',
+    '30.04.2024',
+    '01.05.2024',
+    '09.05.2024',
+    '10.05.2024',
+    '11.05.2024',
+    '12.05.2024',
+    '12.06.2024',
+    '03.11.2024',
+    '04.11.2024',
+];
 
 const emptyCells = size => Array(size).fill(`<div class="cell"></div>`);
 
@@ -29,8 +55,10 @@ const calendarRender = (year = 0, month = 0) => {
     const padMonth = String(thisMonth + 1).padStart(2, '0');
     for (let i = 1; i <= lastDay; i++) {
         const padDay = String(i).padStart(2, '0');
+        const localDate = `${padDay}.${padMonth}.${thisYear}`;
+        const celebration = celebrations.includes(localDate) ? 'celebration' : '';
 
-        const cell = `<div class="cell" data-date="${padDay}.${padMonth}.${thisYear}">${i}</div>`;
+        const cell = `<div class="cell ${celebration}" data-date="${localDate}">${i}</div>`;
         daysCells.push(cell);
     }
 

@@ -51,7 +51,8 @@ html, body {
 }
 
 .calendar > div.cell:nth-child(7n - 1),
-.calendar > div.cell:nth-child(7n) {
+.calendar > div.cell:nth-child(7n),
+.calendar > div.celebration {
     color: #f00;
 }
 
