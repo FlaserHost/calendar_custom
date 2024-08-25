@@ -86,4 +86,22 @@ html, body {
    transform: rotate(-180deg);
 }
 
+.winter {
+    background-color: #338FC2;
+}
 
+.spring {
+    background-color: #A4D13A;
+}
+
+.spring h2 {
+    color: #000;
+}
+
+.summer {
+    background-color: #FFEB00;
+}
+
+.autumn {
+    background-color: #D44F00;
+}

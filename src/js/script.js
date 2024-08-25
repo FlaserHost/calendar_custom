@@ -1,5 +1,9 @@
 'use strict';
 
+const calendarWrapper = document.querySelector('.header-wrapper');
+const calendarHeader = document.querySelector('.calendar-header');
+const calendar = document.querySelector('.calendar');
+
 const daysNames = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'];
 const celebrations = [
     '01.01.2024',
@@ -28,6 +32,15 @@ const celebrations = [
     '04.11.2024',
 ];
 
+const seasons = {
+    winter: ['декабрь', 'январь', 'февраль'],
+    spring: ['март', 'апрель', 'май'],
+    summer: ['июнь', 'июль', 'август'],
+    autumn: ['сентябрь', 'октябрь', 'ноябрь']
+};
+
+const seasonsColors = Object.keys(seasons);
+
 const emptyCells = size => Array(size).fill(`<div class="cell"></div>`);
 
 const currentDate = new Date().toLocaleDateString();
@@ -45,6 +58,15 @@ const calendarRender = (year = 0, month = 0) => {
     const thisMonthName = date.toLocaleDateString('ru-RU', {
        month: 'long'
     });
+
+    for (let key in seasons) {
+        if (seasons[key].includes(thisMonthName)) {
+            calendarWrapper.className = `header-wrapper ${key}`;
+            break;
+        }
+    }
+
+    calendarHeader.innerText = `${thisMonthName} ${thisYear}`;
 
     const firstDayNumber = daysNames.indexOf(firstDayName);
     let daysCells = emptyCells(firstDayNumber);
@@ -67,13 +89,8 @@ const calendarRender = (year = 0, month = 0) => {
     const lastEmptyCells = emptyCells(emptyDaysLeft);
     daysCells = [...daysCells, ...lastEmptyCells];
 
-    const calendar = document.querySelector('.calendar');
     calendar.querySelectorAll('.cell').forEach(cell => cell.remove());
-
     calendar.insertAdjacentHTML('beforeend', daysCells.join(''));
-
-    const calendarHeader = document.querySelector('.calendar-header');
-    calendarHeader.innerText = `${thisMonthName} ${thisYear}`;
 
     const currentDay = calendar.querySelector(`.cell[data-date="${currentDate}"]`);
     if (currentDay) {
