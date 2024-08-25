@@ -39,8 +39,6 @@ const seasons = {
     autumn: ['сентябрь', 'октябрь', 'ноябрь']
 };
 
-const seasonsColors = Object.keys(seasons);
-
 const emptyCells = size => Array(size).fill(`<div class="cell"></div>`);
 
 const currentDate = new Date().toLocaleDateString();
